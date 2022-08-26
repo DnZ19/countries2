@@ -8,33 +8,40 @@
 <body>
 
 <main class="main-container">
+    <wrapper class="wrapper">
 
-    <article class="inner-container">
+        <article class="top-container">
 
-        <div>
-            <input type="search" id="site-search" name="q" placeholder="Country...">
+            <h1>Let's search some countries</h1>
 
-            <button id="button">Search</button>
-        </div>
+            <img id="world-picture" src="/world.395554fe.png" alt="pica">
 
+            <form id="search-field-submit">
 
-        <div class="title-bar">
-            <div id="country-flag">
+                <input id="search" placeholder="County...">
+                <button id="refresh-search" type="submit">Search</button>
+            </form>
 
+            <button id="reload-button">Reload</button>
+
+        </article>
+
+        <article class="information-section">
+            <div class="title-bar">
+                <div id="country-flag">
+
+                </div>
+                <div id="country-title">
+
+                </div>
             </div>
-            <div id="country-title">
-
-            </div>
-        </div>
 
 
-        <div id="country-info">
+            <div id="country-info"></div>
 
+        </article>
 
-        </div>
-
-
-    </article>
+    </wrapper>
 
 </main>
 
