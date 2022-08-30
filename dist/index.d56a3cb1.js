@@ -463,25 +463,35 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 let fieldValue = ""; //to catch the input from the search bar
+const imageItem = document.createElement("IMG");
+const countryTitle = document.createElement("h2");
+const countryName = document.createElement("P");
+const countryCurrency = document.createElement("P");
+const countryError = document.createElement("P");
 const getCountries = async (searchString)=>{
+    imageItem.innerHTML = "";
+    countryTitle.innerHTML = "";
+    countryName.innerHTML = "";
+    countryCurrency.innerHTML = "";
+    countryError.innerHTML = "";
     try {
         const response = await _axiosDefault.default.get(`https://restcountries.com/v2/name/${searchString}`);
         console.log(response);
         console.log(response.data[0].name);
         console.log(response.data[0].subregion);
         const { name , subregion , population , flag , currencies , capital  } = response.data[0];
-        const imageItem = document.createElement("IMG");
+        // const imageItem = document.createElement("IMG");
         imageItem.setAttribute("src", flag);
         document.getElementById("country-flag").appendChild(imageItem);
-        const countryTitle = document.createElement("h2");
+        //const countryTitle = document.createElement("h2");
         countryTitle.textContent = `${name}`;
         document.getElementById("country-title").appendChild(countryTitle);
-        const countryName = document.createElement("P");
+        //const countryName = document.createElement("P");
         countryName.textContent = `${name} is situated in ${subregion}. It has a population of ${population} people.`;
         document.getElementById("country-info").appendChild(countryName);
         const numberOfCurrencies = response.data[0].currencies.length;
         if (numberOfCurrencies === 1) {
-            const countryCurrency = document.createElement("P");
+            // const countryCurrency = document.createElement("P");
             countryCurrency.textContent = `The capital is ${capital} and you can pay with ${response.data[0].currencies[0].name}'s`;
             document.getElementById("country-info").appendChild(countryCurrency);
         } else {
@@ -491,7 +501,7 @@ const getCountries = async (searchString)=>{
         }
     } catch (e) {
         console.error(e);
-        const countryError = document.createElement("P");
+        // const countryError = document.createElement("P");
         countryError.textContent = `${searchString} is not a country! Please try again!`;
         document.getElementById("country-info").appendChild(countryError);
     }
@@ -515,18 +525,7 @@ reloadButton.addEventListener("click", refreshPage);
 function refreshPage() {
     location.reload();
     return false;
-} // werkt niet....
- // const renewSearch = document.getElementById("refresh-search");
- // renewSearch.addEventListener("click", resetSearch)
- //
- //
- // function resetSearch()  {
- //     document.getElementById("country-flag").removeChild(imageItem);
- //     document.getElementById("country-title").removeChild(countryTitle);
- //     document.getElementById("country-info").removeChild(countryName);
- //     document.getElementById("country-info").removeChild(countryCurrency);
- //     document.getElementById("country-info").removeChild(countryError);
- // }
+}
 
 },{"axios":"1IeuP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1IeuP":[function(require,module,exports) {
 module.exports = require('./lib/axios');
